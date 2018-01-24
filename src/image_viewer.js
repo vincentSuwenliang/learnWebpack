@@ -1,4 +1,4 @@
-// import './style/image_viewer.css'
+import './style/image_viewer.css'
 // can not import css in js file
 /*
 Module parse failed: Unexpected token (1:4)
