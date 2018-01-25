@@ -46,6 +46,14 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({ // add <scripts> for us auto
       template: 'src/index.html'
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     })
-  ]
+  ],
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    compress: true,
+    port: 9000
+  }
 };
