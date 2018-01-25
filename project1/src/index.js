@@ -1,6 +1,13 @@
-import sum from './sum';
-import './image_viewer';
+const button = document.createElement('button');
+button.innerText = 'click me';
+button.onclick = () => {
+    // System.import return a Promise
+    System.import('./image_viewer').then(module => {
+        console.log(module);
+        module.default();
+        // now the module is a function when export default () => {}
+        
+    });
+};
 
-const totol = sum(5,10);
-
-console.log(totol);
+document.body.appendChild(button);
