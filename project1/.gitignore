@@ -1,0 +1,8 @@
+build/
+node_modules/
+npm-debug.log
+
+
+# .gitignore not work cause of cache, the files already been tracked
+# git rm -r --cached
+# http://www.pfeng.org/archives/840
