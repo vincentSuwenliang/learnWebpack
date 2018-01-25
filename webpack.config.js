@@ -5,7 +5,8 @@ const config = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'build'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath: 'build/' //for url-loader(other loaders) will apend 'output.publicPath'
     },
     module: {
         rules: [
