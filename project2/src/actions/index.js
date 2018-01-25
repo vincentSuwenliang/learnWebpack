@@ -30,7 +30,7 @@ export const resetArtist = () => {
 export const clearError = () => {
   return { type: CLEAR_ERROR };
 };
-
+// test change
 export const selectArtist = id => {
   return { type: SELECT_ARTIST, payload: id };
 };

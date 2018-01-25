@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const VENDOR_LIBS = [
   "faker",
@@ -23,7 +24,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].js'
+    filename: '[name].[chunkhash].js' // hash the file when the content is changed
   },
   module: {
     rules: [
@@ -40,7 +41,11 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor' // duplicate the pull out to vendor
+      names: ['vendor', 'manifest'] // duplicate the pull out to vendor
+      // manifest for sure the vendor file is changed instead if pull out from bundle.js misunderstanding
+    }),
+    new HtmlWebpackPlugin({ // add <scripts> for us auto
+      template: 'src/index.html'
     })
   ]
 };
