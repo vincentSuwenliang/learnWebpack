@@ -10,6 +10,7 @@ import small from '../assets/200.jpeg';
 // module build failed: Error: dyld: Library not loaded: /usr/local/opt/libpng/lib/libpng16.16.dylib
 // https://github.com/tcoopman/image-webpack-loader/issues/51
 // brew install libpng and then npm install file-loader --save-dev
+// succeed, the problem is brew install libpng
 
 const image = document.createElement('img');
 image.src = small;
