@@ -1,11 +1,29 @@
 var webpack = require('webpack');
 var path = require('path');
 
+const VENDOR_LIBS = [
+  "faker",
+  "lodash",
+  "react",
+  "react-dom",
+  "react-input-range",
+  "react-redux",
+  "react-router",
+  "redux",
+  "redux-form",
+  "redux-thunk" 
+  // from package.json
+];
+
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    bundle: './src/index.js',
+    vendor: VENDOR_LIBS // produce vendor.js
+    // get 2 sepreate files but bundle included vendor code
+  },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: '[name].js'
   },
   module: {
     rules: [
@@ -19,5 +37,10 @@ module.exports = {
         use: ['style-loader', 'css-loader']
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor' // duplicate the pull out to vendor
+    })
+  ]
 };
